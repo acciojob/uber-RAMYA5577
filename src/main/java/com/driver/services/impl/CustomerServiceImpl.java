@@ -89,6 +89,7 @@ public class CustomerServiceImpl implements CustomerService {
 		tripBooking.setStatus(TripStatus.CANCELED);
 		customerRepository2.save(tripBooking.getCustomer());
 		driverRepository2.save(tripBooking.getDriver());
+		tripBookingRepository2.save(tripBooking);
 	}
 
 	@Override
@@ -98,6 +99,6 @@ public class CustomerServiceImpl implements CustomerService {
 		   tripBooking.setStatus(TripStatus.COMPLETED);
 		   customerRepository2.save(tripBooking.getCustomer());
 		   driverRepository2.save(tripBooking.getDriver());
-//		   tripBookingRepository2.save(tripBooking);
+		   tripBookingRepository2.save(tripBooking);
 	}
 }
