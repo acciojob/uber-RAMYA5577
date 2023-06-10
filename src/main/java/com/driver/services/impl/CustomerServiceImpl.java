@@ -48,19 +48,24 @@ public class CustomerServiceImpl implements CustomerService {
 		// If no driver is available, throw "No cab available!" exception
 		//Avoid using SQL query
 		TripBooking tripBooking=new TripBooking();
+
 		return tripBooking;
+
 	}
 
 	@Override
 	public void cancelTrip(Integer tripId){
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
-
-
+		TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
+		tripBooking.setStatus(TripStatus.CANCELED);
+		tripBookingRepository2.save(tripBooking);
 	}
 
 	@Override
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
-
+           TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
+		   tripBooking.setStatus(TripStatus.COMPLETED);
+		   tripBookingRepository2.save(tripBooking);
 	}
 }

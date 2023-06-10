@@ -10,7 +10,6 @@ public class Driver{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int driverId;
-
     String mobile;
     String passWord;
 

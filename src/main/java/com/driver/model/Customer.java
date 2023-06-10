@@ -3,7 +3,7 @@ package com.driver.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
