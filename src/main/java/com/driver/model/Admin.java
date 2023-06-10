@@ -9,13 +9,13 @@ public class Admin{
    @GeneratedValue(strategy = GenerationType.AUTO)
    int adminId;
    @Column(unique = true,nullable = false)
-    String name;
-    String passWord;
+    String username;
+    String password;
 
-    public Admin(int adminId, String name, String passWord) {
+    public Admin(int adminId, String username, String password) {
         this.adminId = adminId;
-        this.name = name;
-        this.passWord = passWord;
+        this.username = username;
+        this.password = password;
     }
 
     public Admin() {
@@ -30,19 +30,19 @@ public class Admin{
         this.adminId = adminId;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String passWord) {
+        this.password = password;
     }
 }

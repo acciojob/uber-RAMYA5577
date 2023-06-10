@@ -12,7 +12,7 @@ public class Driver{
     int driverId;
     @Column(unique = true,nullable = true)
     String mobile;
-    String passWord;
+    String password;
 
     @OneToOne
     @JoinColumn
@@ -21,10 +21,10 @@ public class Driver{
     @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)
     List<TripBooking> tripBookingList=new ArrayList<>();
 
-    public Driver(int driverId, String mobile, String passWord, Cab cab, List<TripBooking> tripBookingList) {
+    public Driver(int driverId, String mobile, String password, Cab cab, List<TripBooking> tripBookingList) {
         this.driverId = driverId;
         this.mobile = mobile;
-        this.passWord = passWord;
+        this.password = password;
         this.cab = cab;
         this.tripBookingList = tripBookingList;
     }
@@ -49,12 +49,12 @@ public class Driver{
         this.mobile = mobile;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String passWord) {
+        this.password = password;
     }
 
     public Cab getCab() {

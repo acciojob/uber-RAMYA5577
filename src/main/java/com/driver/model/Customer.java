@@ -10,15 +10,15 @@ public class Customer{
     int customerId;
     @Column(unique = true,nullable = false)
     String mobile;
-    String passWord;
+    String password;
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     List<TripBooking> tripBookingList=new ArrayList<>();
 
 
-    public Customer(int customerId, String mobile, String passWord, List<TripBooking> tripBookingList) {
+    public Customer(int customerId, String mobile, String password, List<TripBooking> tripBookingList) {
         this.customerId = customerId;
         this.mobile = mobile;
-        this.passWord = passWord;
+        this.password = password;
         this.tripBookingList = tripBookingList;
     }
 
@@ -42,12 +42,12 @@ public class Customer{
         this.mobile = mobile;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String passWord) {
+        this.password = passWord;
     }
 
     public List<TripBooking> getTripBookingList() {
