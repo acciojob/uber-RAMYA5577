@@ -3,6 +3,7 @@ package com.driver.services.impl;
 import com.driver.model.TripBooking;
 import com.driver.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.driver.model.Customer;
@@ -12,7 +13,9 @@ import com.driver.repository.DriverRepository;
 import com.driver.repository.TripBookingRepository;
 import com.driver.model.TripStatus;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,10 +50,36 @@ public class CustomerServiceImpl implements CustomerService {
 		//Book the driver with lowest driverId who is free (cab available variable is Boolean.TRUE).
 		// If no driver is available, throw "No cab available!" exception
 		//Avoid using SQL query
-		TripBooking tripBooking=new TripBooking();
+		List<Driver> drivers=driverRepository2.findAll();
+		int id=Integer.MAX_VALUE;
+		Driver d=null;
 
-		return tripBooking;
+		for(Driver driver: drivers){
+			if(driver.getDriverId()<id && driver.getCab().getAvailable()==true){
+				d=driver;
+			}
+		}
+		if(d==null){
+			throw new Exception("No cab available");
+		}
+		else{
+			Customer customer=customerRepository2.findById(customerId).get();
+			TripBooking tripBooking=new TripBooking();
+			tripBooking.setCustomer(customer);
+			tripBooking.setBill(distanceInKm*100);
+			tripBooking.setDriver(d);
+			tripBooking.setStatus(TripStatus.CONFIRMED);
+			tripBooking.setFromLocation(fromLocation);
+			tripBooking.setToLocation(toLocation);
+			tripBooking.setDistanceInKm(distanceInKm);
 
+			customer.getTripBookingList().add(tripBooking);
+			d.getTripBookingList().add(tripBooking);
+			customerRepository2.save(customer);
+			driverRepository2.save(d);
+
+			return tripBooking;
+		}
 	}
 
 	@Override
