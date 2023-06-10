@@ -8,6 +8,7 @@ public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int customerId;
+    @Column(unique = true,nullable = false)
     String mobile;
     String passWord;
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)

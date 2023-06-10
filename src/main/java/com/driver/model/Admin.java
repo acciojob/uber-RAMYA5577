@@ -1,15 +1,14 @@
 package com.driver.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 public class Admin{
 
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    int adminId;
+   @Column(unique = true,nullable = false)
     String name;
     String passWord;
 
