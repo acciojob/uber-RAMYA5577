@@ -7,5 +7,5 @@ import com.driver.model.Cab;
 
 @Repository
 public interface CabRepository extends JpaRepository<Cab, Integer> {
-
+    public Cab findByAvailability(Boolean b);
 }
