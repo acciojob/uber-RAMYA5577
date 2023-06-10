@@ -29,6 +29,11 @@ public class Driver{
     }
 
     public Driver() {
+        this.driverId = driverId;
+        this.mobile = mobile;
+        this.passWord = passWord;
+        this.cab = cab;
+        this.tripBookingList = tripBookingList;
     }
 
     public int getDriverId() {

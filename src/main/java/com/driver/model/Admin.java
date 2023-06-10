@@ -20,6 +20,9 @@ public class Admin{
     }
 
     public Admin() {
+        this.adminId = adminId;
+        this.name = name;
+        this.passWord = passWord;
     }
 
     public int getAdminId() {
