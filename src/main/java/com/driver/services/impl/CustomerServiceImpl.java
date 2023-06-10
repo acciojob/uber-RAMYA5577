@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 		if(d==null){
-			throw new Exception("No cab available");
+			throw new Exception("No cab available!");
 		}
 		else{
 			Customer customer=customerRepository2.findById(customerId).get();
