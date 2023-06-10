@@ -22,10 +22,7 @@ public class Customer{
     }
 
     public Customer() {
-        this.customerId = customerId;
-        this.mobile = mobile;
-        this.passWord = passWord;
-        this.tripBookingList = tripBookingList;
+
     }
 
     public int getCustomerId() {
