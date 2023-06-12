@@ -15,6 +15,7 @@ public class CustomerController {
 
 	@Autowired
 	CustomerServiceImpl customerService;
+
 	@PostMapping("/register")
 	public ResponseEntity<Void> registerCustomer(@RequestBody Customer customer){
 		return new ResponseEntity<>(HttpStatus.OK);
