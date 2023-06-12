@@ -3,15 +3,17 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "cab")
 public class Cab{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int Id;
-    int perKmRate;
-    boolean available;
+    private int Id;
+    private int perKmRate;
+    private boolean available;
 
-    @OneToOne(mappedBy = "cab",cascade = CascadeType.ALL)
-    Driver driver;
+    @OneToOne
+    @JoinColumn
+    private Driver driver;
 
     public Cab(int id, int perKmRate, boolean available, Driver driver) {
         Id = id;

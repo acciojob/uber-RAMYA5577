@@ -7,12 +7,12 @@ import java.util.List;
 public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int customerId;
+   private int customerId;
     @Column(unique = true,nullable = false)
-    String mobile;
-    String password;
+    private String mobile;
+    private String password;
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    List<TripBooking> tripBookingList=new ArrayList<>();
+    private List<TripBooking> tripBookingList=new ArrayList<>();
 
 
     public Customer(int customerId, String mobile, String password, List<TripBooking> tripBookingList) {

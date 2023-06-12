@@ -7,19 +7,19 @@ public class TripBooking{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int tripBookingId;
+    private int tripBookingId;
 
-    String fromLocation;
-    String toLocation;
-    int distanceInKm;
-    TripStatus status;
-    int bill;
+    private String fromLocation;
+    private String toLocation;
+    private int distanceInKm;
+    private TripStatus status;
+    private int bill;
     @ManyToOne
     @JoinColumn
-    Customer customer;
+    private Customer customer;
     @ManyToOne
     @JoinColumn
-    Driver driver;
+    private Driver driver;
 
     public TripBooking(int tripBookingId, String fromLocation, String toLocation,
                        int distanceInKm, TripStatus status, int bill, Customer customer, Driver driver) {

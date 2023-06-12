@@ -9,17 +9,16 @@ public class Driver{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int driverId;
+    private int driverId;
     @Column(unique = true,nullable = true)
-    String mobile;
-    String password;
+    private String mobile;
+    private String password;
 
-    @OneToOne
-    @JoinColumn
-    Cab cab;
+    @OneToOne(mappedBy = "driver",cascade = CascadeType.ALL)
+    private Cab cab;
 
     @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)
-    List<TripBooking> tripBookingList=new ArrayList<>();
+    private List<TripBooking> tripBookingList=new ArrayList<>();
 
     public Driver(int driverId, String mobile, String password, Cab cab, List<TripBooking> tripBookingList) {
         this.driverId = driverId;

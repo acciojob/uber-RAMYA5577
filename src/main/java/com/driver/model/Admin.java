@@ -3,14 +3,15 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "admin")
 public class Admin{
 
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
-   int adminId;
+    private int adminId;
    @Column(unique = true,nullable = false)
-    String username;
-    String password;
+   private String username;
+   private String password;
 
     public Admin(int adminId, String username, String password) {
         this.adminId = adminId;
