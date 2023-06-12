@@ -25,12 +25,15 @@ public class DriverServiceImpl implements DriverService {
          Cab cab=new Cab();
 		 cab.setPerKmRate(10);
 		 cab.setAvailable(true);
-		 cabRepository3.save(cab);
 
 		 Driver driver=new Driver();
 		 driver.setMobile(mobile);
 		 driver.setPassword(password);
-		 driver.setCab(cab);
+
+		 driver.setCab(cab);  //Bidirectional mapping
+		 cab.setDriver(driver);
+
+		 //only save the parent the child clas will auto matically saved; because of Bidirectional mapping
 		 driverRepository3.save(driver);
 	}
 
@@ -38,14 +41,17 @@ public class DriverServiceImpl implements DriverService {
 	public void removeDriver(int driverId){
 		// Delete driver without using deleteById function
       Driver driver=driverRepository3.findById(driverId).get();
-	  String mobile=driver.getMobile();
-	  driverRepository3.deleteByMobile(mobile);
+	  driverRepository3.delete(driver);
+//	  String mobile=driver.getMobile();
+//	  driverRepository3.deleteByMobile(mobile);
 	}
 
 	@Override
 	public void updateStatus(int driverId){
 		//Set the status of respective car to unavailable
         Driver driver=driverRepository3.findById(driverId).get();
-		driver.getCab().setAvailable(false);
+		Cab cab=driver.getCab();
+		cab.setAvailable(false);
+		cabRepository3.save(cab);
 	}
 }
