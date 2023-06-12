@@ -22,7 +22,7 @@ public class AdminController {
 	@PostMapping("/register")
 	public ResponseEntity<Void> registerAdmin(@RequestBody Admin admin){
 		return new ResponseEntity<>(HttpStatus.OK);
-	}
+	}it
 
 	@PutMapping("/update")
 	public ResponseEntity<Admin> updateAdminPassword(@RequestParam Integer adminId, @RequestParam String password){
