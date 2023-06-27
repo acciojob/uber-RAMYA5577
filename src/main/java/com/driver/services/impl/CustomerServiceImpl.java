@@ -92,7 +92,6 @@ public class CustomerServiceImpl implements CustomerService {
 		cab.setAvailable(true);
 		tripBookingRepository2.save(tripBooking);
 //		driverRepository2.save(tripBooking.getDriver());
-
 	}
 
 	@Override
